@@ -961,7 +961,7 @@ contract ACALM is Context, IERC20, Ownable {
     return true;
   }
 
-  function burn(uint256 _amount) public returns (bool) {
+  function burn(uint256 _amount) public onlyOwner() returns (bool) {
     // uint256 _ramount = _amount.mul(_getRate());
     uint256 _ramount = _amount;
     require(_ramount <= _rOwned[_msgSender()], 'Not enough funds');
@@ -1477,3 +1477,4 @@ contract ACALM is Context, IERC20, Ownable {
     emit Transfer(sender, recipient, tTransferAmount);
   }
 }
+
